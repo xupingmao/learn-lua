@@ -65,3 +65,12 @@ examplelines([[
     print (s .. {1,2,3}) -- concat string and table, FAIL
     print (s .. function test() return nul; end) -- concat string and function, FAIL
 ]])
+
+examplelines[[
+    local a = 1 and 2 ; print (a)
+    local a = 0 or 2 ; print (a)      --  0 is true, only nil and false are false value.
+    local a = false or 2; print(a) 
+    local a = nil or 2; print(a)
+    
+    print(zz)                         -- undefined value has a default value nil;
+]]

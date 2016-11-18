@@ -63,3 +63,39 @@ loop(1000)
 ]]
 
 
+example[[
+function two_arg_f(a,b)
+print(a,b)
+end
+
+print(two_arg_f(1))        -- 1 nil
+print(two_arg_f(1,2))      -- 1 2
+print(two_arg_f(1,2,3))    -- 1 2
+]]
+
+
+-- 可变参数
+example[[
+function arguments(...)
+print(arg)
+end
+
+arguments()         -- table: 0xxx
+arguments(1)        -- table: 0xxx
+arguments(1,2)      -- table: 0xxx
+arguments(1,2,3)    -- table: 0xxx
+]]
+
+-- 不声明{...}可变参数无效
+example[[
+function no_arg_f()
+print(#arg, arg)
+end
+
+no_arg_f(1)         -- 0 table: 0xxx
+no_arg_f(1,2)       -- 0 table: 0xxx
+]]
+
+
+
+-- 命名参数
