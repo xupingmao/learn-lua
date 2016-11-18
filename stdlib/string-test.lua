@@ -72,4 +72,8 @@ example ('string.upper("hello,world")')
 
 example ('string.lower("HELLO,world")')
 
+print([[multiple line string:
+hello, line 1;
+hello, line 2;
+]])
 
