@@ -2,12 +2,14 @@
 -- io.open(filename[, mode])
 -- io.flush()
 -- io.close([file])
+-- io.input
 -- io.lines([filename])
 -- io.output([file])
 -- io.popen([prog [, mode]])
 -- io.read()
 -- io.write() --> io.output():write()
 -- io.tmpfile()
+-- io.type()
 
 -- file:seek
 -- file:read
