@@ -52,6 +52,7 @@ end
 print(fib(20))
 ]]
 
+-- 处理尾递归
 example[[
 function loop(n)
 if n <= 0 then return end
@@ -75,6 +76,7 @@ print(two_arg_f(1,2,3))    -- 1 2
 
 
 -- 可变参数
+-- 可变参数保存在arg参数里面
 example[[
 function arguments(...)
 print(arg)
@@ -86,7 +88,7 @@ arguments(1,2)      -- table: 0xxx
 arguments(1,2,3)    -- table: 0xxx
 ]]
 
--- 不声明{...}可变参数无效
+-- 不声明...可变参数无效
 example[[
 function no_arg_f()
 print(#arg, arg)
@@ -99,3 +101,34 @@ no_arg_f(1,2)       -- 0 table: 0xxx
 
 
 -- 命名参数
+
+
+
+-- 函数调用的简化写法
+example[[
+    print "test"
+
+    function wrapper (a) 
+        print ("value - " .. a)
+    end
+
+    wrapper "hello"
+]]
+
+-- 闭包
+
+example[[
+    function outter () 
+        local name = "outter"
+        function inner1 () 
+            return function () 
+                local new_name = name .. ":new"
+                return new_name
+            end
+        end
+
+        return inner1()
+    end
+
+    print(outter()()) -- This is OK, return 'outter:new'
+]]

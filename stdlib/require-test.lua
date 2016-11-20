@@ -1,4 +1,6 @@
+local test = require "test"
 
-require "test"
+print(test) -- >>> true
+-- local example = test.example
 
-print(test_hello)
+example[[print(1)]]

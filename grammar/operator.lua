@@ -73,4 +73,8 @@ examplelines[[
     local a = nil or 2; print(a)
     
     print(zz)                         -- undefined value has a default value nil;
+
+    print (not nil)
+    print (not 0)
+    print (not 1)
 ]]
