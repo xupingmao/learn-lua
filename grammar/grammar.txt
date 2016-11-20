@@ -1,0 +1,59 @@
+Here is the complete syntax of Lua in extended BNF. (It does not describe operator precedences.)
+
+
+	chunk ::= {stat [`;¡ä]} [laststat [`;¡ä]]
+
+	block ::= chunk
+
+	stat ::=  varlist `=¡ä explist | 
+		 functioncall | 
+		 do block end | 
+		 while exp do block end | 
+		 repeat block until exp | 
+		 if exp then block {elseif exp then block} [else block] end | 
+		 for Name `=¡ä exp `,¡ä exp [`,¡ä exp] do block end | 
+		 for namelist in explist do block end | 
+		 function funcname funcbody | 
+		 local function Name funcbody | 
+		 local namelist [`=¡ä explist] 
+
+	laststat ::= return [explist] | break
+
+	funcname ::= Name {`.¡ä Name} [`:¡ä Name]
+
+	varlist ::= var {`,¡ä var}
+
+	var ::=  Name | prefixexp `[¡ä exp `]¡ä | prefixexp `.¡ä Name 
+
+	namelist ::= Name {`,¡ä Name}
+
+	explist ::= {exp `,¡ä} exp
+
+	exp ::=  nil | false | true | Number | String | `...¡ä | function | 
+		 prefixexp | tableconstructor | exp binop exp | unop exp 
+
+	prefixexp ::= var | functioncall | `(¡ä exp `)¡ä
+
+	functioncall ::=  prefixexp args | prefixexp `:¡ä Name args 
+
+	args ::=  `(¡ä [explist] `)¡ä | tableconstructor | String 
+
+	function ::= function funcbody
+
+	funcbody ::= `(¡ä [parlist] `)¡ä block end
+
+	parlist ::= namelist [`,¡ä `...¡ä] | `...¡ä
+
+	tableconstructor ::= `{¡ä [fieldlist] `}¡ä
+
+	fieldlist ::= field {fieldsep field} [fieldsep]
+
+	field ::= `[¡ä exp `]¡ä `=¡ä exp | Name `=¡ä exp | exp
+
+	fieldsep ::= `,¡ä | `;¡ä
+
+	binop ::= `+¡ä | `-¡ä | `*¡ä | `/¡ä | `^¡ä | `%¡ä | `..¡ä | 
+		 `<¡ä | `<=¡ä | `>¡ä | `>=¡ä | `==¡ä | `~=¡ä | 
+		 and | or
+
+	unop ::= `-¡ä | not | `#¡ä
