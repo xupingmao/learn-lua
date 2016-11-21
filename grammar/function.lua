@@ -1,4 +1,19 @@
 
+--[[
+function定义的语法
+
+    function funcname funcbody | 
+    local function Name funcbody
+         
+         
+function调用的语法
+    
+    functioncall ::=  prefixexp args | prefixexp `:′ Name args 
+
+	args ::=  `(′ [explist] `)′ | tableconstructor | String 
+]]
+
+
 _eg_cnt = 1;
 function example(msg)
     print("eg:" .. _eg_cnt) -- print empty line
@@ -101,7 +116,17 @@ no_arg_f(1,2)       -- 0 table: 0xxx
 
 
 -- 命名参数
-
+-- 实际上是调用的一个语法糖
+example[[
+    function introduce(arg)
+        local name = arg.name;
+        local age  = arg.age;
+        print("name="..name..",age="..age)
+    end
+    introduce{name="Jhon",age=25}    -- >>> name=Jhon,age=25
+    introduce({name="Jhon",age=25})  -- 与上式等价
+]]
+    
 
 
 -- 函数调用的简化写法
